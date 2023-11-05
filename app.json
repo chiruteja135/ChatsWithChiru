@@ -21,10 +21,19 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.chiruteja135.ChatsWithChiru"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "529dbe66-f744-4f42-af4b-c458b03bb6f9"
+      }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }

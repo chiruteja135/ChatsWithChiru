@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import {View,Text,StyleSheet,TextInput,TouchableOpacity,Button,ActivityIndicator} from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Button, ActivityIndicator } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FIREBASE_AUTH } from "../../Firebaseconfig";
-import {createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import Signup from "./SignUp";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +19,7 @@ export default function Login() {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
       console.log(response);
-      alert("LogIn Successfull")
+      // alert("LogIn Successfull")
     } catch (error) {
       console.log(error);
     } finally {
@@ -26,23 +27,7 @@ export default function Login() {
     }
   };
 
-  const SignUp = async () => {
-    setLoading(true);
-    try {
-      const response = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      console.log(response);
-      alert("Registered successfully");
-    } catch (error) {
-      console.log(error);
-      alert("Signin  failed");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -66,16 +51,17 @@ export default function Login() {
         {loading ? (
           <ActivityIndicator size="large" color="#0000ff" />
         ) : (
-          <>
-          <View style={styles.flexy}>
-            <View style={styles.button}>
-              <Button onPress={SignIn} title="Login" />
-            </View>
-            <View style={styles.button}>
-              <Button onPress={SignUp} title="Sign Up" />
-            </View>
-            </View>
-          </>
+          <View style={styles.container}>
+            <TouchableOpacity onPress={SignIn} style={styles.tob}  >
+              <Text style={styles.button}>     login</Text>
+            </TouchableOpacity>
+
+            <Text>Are you a new user?</Text>
+
+            <TouchableOpacity onPress={() => {navigation.navigate('Signup')}}>
+              <Text style={styles.signuplink}>Click here to sign up</Text>
+            </TouchableOpacity>
+          </View>
         )}
       </Text>
     </View>
@@ -88,10 +74,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  flexy: {
-    flexDirection:'column',
-    maxWidth:'auto',
-    // backgroundColor:'red',
+  tob: {
+    justifyContent:'center',
+    alignItems:'center'
+
   },
   login: {
     margin: 35,
@@ -106,12 +92,23 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   button: {
-    borderRadius: 50,
-    margin: 25,
-    width: 150,
+    color:'white',
+    fontSize:20,
+    fontWeight:'500',
+    backgroundColor:'royalblue',
+    borderRadius:23,
+    width:100,
+    height:30,
+    textAlign:"justify",
+    margin:20,
+    alignItems:"center", 
+    justifyContent:'center',
+    alignContent:'center'
   },
   signuplink: {
     textDecorationLine: "underline",
     color: "blue",
+    margin:10,
+    padding:15,
   },
 });
