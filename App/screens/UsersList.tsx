@@ -42,7 +42,7 @@ const UserList = () => {
         renderItem={({ item }) => (
           <TouchableOpacity   style={styles.itemContainer} onPress={() => navigation.navigate('Chatscreen')}>
             <Text style={styles.text}>
-              <Ionicons name="person" size={54} color="royalblue" />{item.Name}
+              <Ionicons name="person" size={24} color="#02055A" />{item.Name}
             </Text>
             {/* Other Text elements */}
           </TouchableOpacity>
@@ -62,18 +62,17 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     borderWidth: 1,
-    borderColor: 'lightgray',
     padding: 10,
-    margin:20,
-    width:'90%',
-    height:80,
+    margin:10,
+    width:'95%',
+    height:50,
     borderRadius:20,
-    backgroundcolor:'skyblue',
-    flex:1,
+    backgroundColor:'white',
+    flex:2,
   },
   text: {
-    fontSize: 36,
-    color: 'royalblue',
+    fontSize: 16,
+    color:'#02055A',
   },
 });
 
