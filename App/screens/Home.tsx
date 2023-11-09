@@ -9,12 +9,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getFirestore } from 'firebase/firestore';
 import UsersList from './UsersList';
 
-
-
 interface RouterProps {
   navigation: NavigationProp<any, any>;
 }
-
 const Home = ({ navigation }: RouterProps) => {
 
   const signOut = async () => {
@@ -29,6 +26,7 @@ const Home = ({ navigation }: RouterProps) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Welcome to ChatsWithChiru</Text>
+        <Text style={styles.subtitle}>Pick a user to chat with</Text>
       </View>
       {<UsersList />}
         <View style={styles.bottomTab}>
@@ -71,6 +69,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     color: 'white',
+  },
+  subtitle:{
+    margin:5,
+    fontSize:20,
+    color:'white',
   },
   bottomTab: {
     position: 'absolute',

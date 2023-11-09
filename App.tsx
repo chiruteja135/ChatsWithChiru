@@ -10,23 +10,8 @@ import Signup from './App/screens/SignUp';
 
 const Stack = createNativeStackNavigator();
 
-// const InsideStack = createNativeStackNavigator();
-
-// function InsideLayout() {
-//   return (
-//     <InsideStack.Navigator>
-//       <InsideStack.Screen name="List" component={List} />
-//       {/* <InsideStack.Screen name="UsersList" component={UsersList} /> */}
-//     </InsideStack.Navigator>
-//   )
-// }
-
 export default function App() {
   const [user, setUser] = useState<User | null>(null);
-
-  // const [showAppName, setShowAppName] = useState(true);
-  // const fadeAnim = new Animated.Value(1);
-
   useEffect(() => {
     onAuthStateChanged(FIREBASE_AUTH, (user) => {
       console.log('user', user);
@@ -47,19 +32,4 @@ export default function App() {
         )}
       </Stack.Navigator>
     </NavigationContainer>
-  );
-
-
-  // return (
-  //   <NavigationContainer>
-  //     <Stack.Navigator initialRouteName="Login">
-  //       {user ? (
-  //       <Stack.Screen name="Inside" component={InsideLayout} options={{ headerShown: false }} />
-  //       ) : (
-  //       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
-  //       )}
-  //     </Stack.Navigator>
-  //   </NavigationContainer>
-  // );
-}
-
+  )}
