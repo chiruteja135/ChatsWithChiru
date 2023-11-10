@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { getDocs, collection, getFirestore } from 'firebase/firestore';
 import { FIREBASE_DB } from '../../Firebaseconfig'; // Import your Firebase configuration
@@ -12,7 +11,7 @@ interface User {
   id: string;
   Name: string;
   Email: string;
-  PhoneNumber: string;
+  PhoneNumber: number;
 }
 
 const UserList = () => {
